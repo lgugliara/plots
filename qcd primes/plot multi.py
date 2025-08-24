@@ -64,9 +64,7 @@ for q2 in key_Q2:
     plt.imshow(comp, origin="lower", cmap=cmap_phase, vmin=-np.pi, vmax=np.pi)
     plt.xticks([]); plt.yticks([])
     plt.title(fr"Fase $\arg(H_{{\rm eff}})$ — $Q^2={q2:.2f}$")
-    out = f"/mnt/data/phase_Q2_{str(round(q2,3)).replace('.','_')}.png"
-    plt.tight_layout(); plt.savefig(out, dpi=130); plt.show()
-    phase_paths.append(out)
+    plt.tight_layout(); plt.show()
 
 # -------------------- (2) FFT 2D della mappa (Q^2 = π/2) --------------------
 q2_fft = np.pi/2
@@ -80,16 +78,14 @@ plt.figure(figsize=(6,6))
 plt.imshow(np.angle(H_fft), origin="lower", cmap=cmap_phase, vmin=-np.pi, vmax=np.pi)
 plt.xticks([]); plt.yticks([])
 plt.title(rf"Mappa (fase) per FFT — $Q^2=\pi/2$")
-fft_map_path = "/mnt/data/fft_input_map_Q2_pi_over_2.png"
-plt.tight_layout(); plt.savefig(fft_map_path, dpi=130); plt.show()
+plt.tight_layout(); plt.show()
 
 # Spettro 2D
 plt.figure(figsize=(6,6))
 plt.imshow(F_show, origin="lower", cmap=cmap_mag)
 plt.xticks([]); plt.yticks([])
 plt.title(r"Spettro 2D (|FFT|, log) — $Q^2=\pi/2$")
-fft_spec_path = "/mnt/data/fft_spectrum_Q2_pi_over_2.png"
-plt.tight_layout(); plt.savefig(fft_spec_path, dpi=130); plt.show()
+plt.tight_layout(); plt.show()
 
 # -------------------- (3) Ampiezza con J0(Q^2 Δ) --------------------
 # implementiamo j0 evitando scipy (non disponibile talvolta): serie rapida per range moderato
@@ -103,7 +99,6 @@ def j0_series(x, terms=40):
         out += term
     return out
 
-bessel_paths = []
 for q2 in key_Q2:
     A = np.abs(j0_series(q2 * Delta)) * K
     mats = [W * A for _, W in filters]
@@ -113,8 +108,4 @@ for q2 in key_Q2:
     plt.imshow(compA, origin="lower", cmap=cmap_mag)
     plt.xticks([]); plt.yticks([])
     plt.title(fr"Ampiezza $|J_0(Q^2 \Delta)|$ — $Q^2={q2:.2f}$")
-    outA = f"/mnt/data/bessel_amp_Q2_{str(round(q2,3)).replace('.','_')}.png"
-    plt.tight_layout(); plt.savefig(outA, dpi=130); plt.show()
-    bessel_paths.append(outA)
-
-phase_paths, fft_map_path, fft_spec_path, bessel_paths
+    plt.tight_layout(); plt.show()

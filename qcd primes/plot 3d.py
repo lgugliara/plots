@@ -4,7 +4,7 @@ from matplotlib import animation
 from math import gcd
 
 # -------------------- SETTINGS --------------------
-N = 24                 # 3D grid size
+N = 32                 # 3D grid size
 sigma = N              # wide Gaussian like your version
 k_base = -np.pi        # starting k (will animate around this)
 frames = 200           # show enough steps to perceive periodicity
@@ -12,7 +12,7 @@ k_span = 2*np.pi       # how much k varies over the animation
 threshold_K = 0.5        # keep points where the radial envelope is strong
 point_size = 8
 alpha_pts = 0.2
-cmap = "viridis"
+cmap = "plasma"
 
 # -------------------- 3D GRID --------------------
 x = np.arange(1, N+1)

@@ -5,7 +5,7 @@ from math import gcd
 
 # ------- SETTINGS -------
 N = 128
-sigma = 1.0 # float(N)
+sigma = 1 # float(N)
 t_values = np.linspace(0, 2*np.pi, N)  # Q^2 real, 0..2π
 cmap = "viridis"
 
