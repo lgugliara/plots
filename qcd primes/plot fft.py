@@ -5,9 +5,9 @@ from math import gcd
 
 # --- SETTINGS ---
 N = 1024
-sigma = 42
+sigma = 12
 frames = 256
-Q2_values = np.logspace(-0.01, 0, frames) * np.pi  # come il tuo
+Q2_values = np.logspace(-1, 0, frames) * np.pi  # come il tuo
 cmap = "twilight"  # come il tuo
 
 # --- INDEX AND DELTA ---
